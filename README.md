@@ -1,5 +1,13 @@
 # Reveal Line archive 14
 
+## Append v0.59.0 for historical preservation
+
+This successor preserves the published v0.59.0 original ZIP and exact six-gate source qualification alongside v0.57.0. Frozen game source is `76dc4bf36baec11ce4dff6ca49773d3b9d6c0ae5`; no game is rebuilt, retagged or reformatted. All 659 existing v0.57.0 canonical rows remain exact.
+
+The combined inventory is 1,342 files / 625,582,144 bytes, below the unchanged 800,000,000-byte archive budget. Existing extraction, ordinary-file, CRC/hash, no-clobber and capacity guards are unchanged. The workflow additionally fetches the original v0.59.0 tag. All large payload work stays on the hosted runner.
+
+A successful hosted extraction and independent full reread, a complete canonical HTTP audit and scoped native preservation checks are required for admission. Earlier deployment and browser records remain historical evidence, not acceptance of this successor. This infrastructure does not change the current game selector and does not establish offline, physical-controller or full P03 acceptance.
+
 Preserve the original v0.57.0 release from source `b7db0134d4ede3452dc90b5d3f7ffb1491a0579b`, tree `7cd40e4ef8bf975e7eb2795cdd2669aa18811a57`. The source tag, release metadata, original ZIP and source qualification are pinned in `source-lock.json` and `input-authority.json`.
 
 This is an archive of historical behavior, not P01 acceptance. The public portrait offline-panel displacement discovered in v0.57.0 remains in its immutable game; the forthcoming v0.57.1 patch is qualified separately. No original game assets or source are rebuilt or replaced.
