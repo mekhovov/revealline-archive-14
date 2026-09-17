@@ -233,16 +233,23 @@ class CohortTests(unittest.TestCase):
 class CommittedMetadataTests(unittest.TestCase):
     def test_exact_v057_metadata_and_source_qualification(self):
         lock, inventory = locked_inputs(ROOT)
-        self.assertEqual((lock['expectedFiles'], lock['expectedBytes']), (662, 312553884))
-        self.assertEqual(len(lock['releases']), 1)
+        self.assertEqual((lock['expectedFiles'], lock['expectedBytes']), (1342, 625582144))
+        self.assertEqual([r['version'] for r in lock['releases']], ['v0.57.0', 'v0.59.0'])
         release = lock['releases'][0]
         self.assertEqual(release['version'], 'v0.57.0')
         self.assertEqual(release['tagObject'], 'c3fd6145392491748c4578eef15b51983af84f9e')
         self.assertEqual(release['sourceRevision'], 'b7db0134d4ede3452dc90b5d3f7ffb1491a0579b')
         self.assertEqual(release['sourceQualification'], {'sha256': 'fa7619fb0633fb20e45def339ff94421b4862eaccd2386ff608c0d0a1f8344bb', 'bytes': 51091})
         rows = [row for row in inventory['files'] if row['path'].endswith('/source-qualification.json')]
-        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(rows), 2)
         self.assertEqual(rows[0]['bytes'], 51091)
+        successor = lock['releases'][1]
+        self.assertEqual(successor['tagObject'], '4444c3d8479fb0a30a9dd38a360261f5166e7613')
+        self.assertEqual(successor['sourceRevision'], '76dc4bf36baec11ce4dff6ca49773d3b9d6c0ae5')
+        self.assertEqual(successor['sourceTree'], '68a1ee7c6668464282703ac2b5aeb91231cf290f')
+        self.assertEqual(successor['sourceQualification'], {'sha256': '65322d7765c92c3ae16b71ac95d0109c34294946e4a93a31bb2269511dd0bbc3', 'bytes': 64871})
+        self.assertEqual(rows[1]['bytes'], 64871)
+
 
     def test_changed_or_wrong_identity_qualification_refuses(self):
         import shutil

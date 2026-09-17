@@ -32,7 +32,7 @@ jobs:
           sparse-checkout-cone-mode: false
       - name: Fetch the original immutable release tag for identity verification
         working-directory: source
-        run: git fetch --depth=1 origin refs/tags/v0.57.0:refs/tags/v0.57.0
+        run: git fetch --depth=1 origin refs/tags/v0.57.0:refs/tags/v0.57.0 refs/tags/v0.59.0:refs/tags/v0.59.0
       - name: Require artifact workspace capacity
         run: |
           python3 - <<'PY'
